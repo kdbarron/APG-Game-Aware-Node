@@ -891,7 +891,7 @@ function setTwitchIFrames(isMobile, chatIRCChannelName, chatWidth, chatHeight, v
     iframe.setAttribute("frameborder", "0");
     iframe.setAttribute("scrolling", "no");
     iframe.setAttribute("id", "chat_embed");
-    iframe.setAttribute("src", "https://www.twitch.tv/" + chatIRCChannelName + "/chat");
+    iframe.setAttribute("src", "https://www.twitch.tv/embed" + chatIRCChannelName + "/chat");
     iframe.setAttribute("width", '' + chatWidth);
     iframe.setAttribute("height", '' + chatHeight);
     document.getElementById("TwitchChat").appendChild(iframe);
