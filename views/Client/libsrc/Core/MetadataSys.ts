@@ -104,6 +104,9 @@ class MetadataSys {
 	}
 
 	public Update(): void {
+
+		//I can change this part
+
 		if (this.useLocalTestNetworking) {
 			this.fileReadTime++;
 			if (this.fileReadTime >= 30) {
