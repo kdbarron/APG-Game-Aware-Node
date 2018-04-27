@@ -4,7 +4,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const bodyParser = require('body-parser')
 const app = express();
-const metaDirectory = __dirname + '/public/TestTraffic';
+const metaDirectory = __dirname + '/public/TestTraffic/test';
 const gameIndexPath = path.join(__dirname + '/views/Client/website/game.html')
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -23,7 +23,6 @@ app.post('/metaFromUnity', function(req, res) {
    
     switch(req.body.command){
     	case 'init':
-    		break;
     		{   /* delte whole files in test directory */
     			console.log("[Initialize]")
     			fs.readdir(metaDirectory, (err, files) => {
