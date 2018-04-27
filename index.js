@@ -5,6 +5,7 @@ const PORT = process.env.PORT || 5000
 const bodyParser = require('body-parser')
 const app = express();
 const metaDirectory = path.join(__dirname + '/public/TestTraffic');
+const gameIndexPath = path.join(__dirname + '/views/Client/website/game.html')
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -15,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'views/Client/website')))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
-app.get('/', (req, res) => res.sendFile( path.join(__dirname + '/views/Client/website/game.html')))
+app.get('/', (req, res) => res.sendFile(gameIndexPath))
 
 
 app.post('/metaFromUnity', function(req, res) {
@@ -38,7 +39,7 @@ app.post('/metaFromUnity', function(req, res) {
     		break;
 
     	case 'update':
-    		console.log("[Write meta file]" + req.body.frameInfo)
+    		console.log("[Write meta file]" + req.body.frameInfo + ",//" + gameIndexPath)
     		var writer = fs.createWriteStream(metaDirectory + '/test' + req.body.frameInfo + '.txt');
     		writer.write(req.body.cachedMeta);
     		console.log("saved" +  req.body.frameInfo)
