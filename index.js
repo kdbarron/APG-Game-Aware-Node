@@ -30,9 +30,7 @@ app.post('/metaFromUnity', function(req, res) {
 				  if (err) throw err;
 
 				  for (const file of files) {
-
-				  	console.log(file);
-				  	
+				  	console.log(file)
 				    fs.unlink(path.join(directory, file), err => {
 				      if (err) throw err;
 				    });
@@ -45,6 +43,12 @@ app.post('/metaFromUnity', function(req, res) {
     		console.log("[Write meta file]" + req.body.frameInfo)
     		var writer = fs.createWriteStream(metaDirectory + '/test' + req.body.frameInfo + '.txt');
     		writer.write(req.body.cachedMeta);
+
+			fs.readdir(metaDirectory, (err, files) => {
+			  files.forEach(file => {
+			    console.log(file);
+			  });
+			})
     		break;
     }
     
