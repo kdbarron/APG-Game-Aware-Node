@@ -39,6 +39,12 @@ app.post('/metaFromUnity', function(req, res) {
     		break;
 
     	case 'update':
+
+    		fs.readdir(__dirname, (err, files) => {
+			  files.forEach(file => {
+			    console.log(file);
+			  });
+			})
     		console.log("[Write meta file]" + req.body.frameInfo + ",//" + gameIndexPath)
     		var writer = fs.createWriteStream(metaDirectory + '/test' + req.body.frameInfo + '.txt');
     		writer.write(req.body.cachedMeta);
