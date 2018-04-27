@@ -4,7 +4,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const bodyParser = require('body-parser')
 const app = express();
-const metaDirectory = 'TestTraffic';
+const metaDirectory = path.join(__dirname + 'public/TestTraffic');
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -38,7 +38,7 @@ app.post('/metaFromUnity', function(req, res) {
 
     	case 'update':
     		console.log("[Write meta file]" + req.body.frameInfo)
-    		var writer = fs.createWriteStream('TestTraffic/test' + req.body.frameInfo + '.txt');
+    		var writer = fs.createWriteStream(metaDirectory + '/test' + req.body.frameInfo + '.txt');
     		writer.write(req.body.cachedMeta);
     		break;
     }
