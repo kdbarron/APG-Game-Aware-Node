@@ -30,9 +30,11 @@ app.post('/metaFromUnity', function(req, res) {
 
 				  for (const file of files) {
 				  	console.log(file)
-				    fs.unlink(path.join(directory, file), err => {
-				      if (err) throw err;
-				    });
+				  	if(file != "consit"){
+				  		fs.unlink(path.join(metaDirectory, file), err => {
+					      if (err) throw err;
+					    });
+				  	}
 				  }
 				});
     		}
