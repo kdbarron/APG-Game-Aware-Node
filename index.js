@@ -17,8 +17,9 @@ app.use(express.static(path.join(__dirname, 'public/TestTraffic')))
 app.use(express.static(path.join(__dirname, 'views/Client/website')))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
-app.get('/', (req, res) => res.sendFile(gameIndexPath))
 
+app.get('/', (req, res) => res.sendFile(gameIndexPath))
+// app.get('/fireflies')
 
 app.post('/metaFromUnity', function(req, res) {
    
