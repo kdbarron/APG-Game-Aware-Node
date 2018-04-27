@@ -4,7 +4,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const bodyParser = require('body-parser')
 const app = express();
-const metaDirectory = __dirname + '/TestTraffic';
+const metaDirectory = __dirname + 'public/TestTraffic';
 const gameIndexPath = path.join(__dirname + '/views/Client/website/game.html')
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -40,15 +40,16 @@ app.post('/metaFromUnity', function(req, res) {
 
     	case 'update':
 
-    		fs.readdir(__dirname, (err, files) => {
+    		
+    		console.log("[Write meta file]" + req.body.frameInfo)
+    		var writer = fs.createWriteStream(metaDirectory + '/test' + req.body.frameInfo + '.txt');
+    		writer.write(req.body.cachedMeta);
+
+    		fs.readdir(metaDirectory, (err, files) => {
 			  files.forEach(file => {
 			    console.log(file);
 			  });
 			})
-    		console.log("[Write meta file]" + req.body.frameInfo + ",//" + gameIndexPath)
-    		var writer = fs.createWriteStream(metaDirectory + '/test' + req.body.frameInfo + '.txt');
-    		writer.write(req.body.cachedMeta);
-    		console.log("saved" +  req.body.frameInfo)
     		break;
     }
     
