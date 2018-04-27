@@ -38,7 +38,6 @@ app.post('/metaFromUnity', function(req, res) {
     		break;
 
     	case 'update':
-    		break;
     		console.log("[Write meta file]" + req.body.frameInfo)
     		var writer = fs.createWriteStream(metaDirectory + '/test' + req.body.frameInfo + '.txt');
     		writer.write(req.body.cachedMeta);
