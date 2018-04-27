@@ -4,7 +4,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const bodyParser = require('body-parser')
 const app = express();
-const metaDirectory = path.join(__dirname + '/public/TestTraffic');
+const metaDirectory = __dirname + '/TestTraffic';
 const gameIndexPath = path.join(__dirname + '/views/Client/website/game.html')
 
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
