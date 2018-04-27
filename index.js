@@ -23,6 +23,7 @@ app.post('/metaFromUnity', function(req, res) {
     switch(req.body.command){
     	case 'init':
     		{   /* delte whole files in test directory */
+    			console.log("[Initialize]")
     			fs.readdir(metaDirectory, (err, files) => {
 				  if (err) throw err;
 
@@ -36,6 +37,7 @@ app.post('/metaFromUnity', function(req, res) {
     		break;
 
     	case 'update':
+    		console.log("[Write meta file]" + req.body.frameInfo)
     		var writer = fs.createWriteStream('TestTraffic/test' + req.body.frameInfo + '.txt');
     		writer.write(req.body.cachedMeta);
     		break;
