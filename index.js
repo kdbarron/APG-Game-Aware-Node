@@ -40,6 +40,12 @@ app.post('/metaFromUnity', function(req, res) {
 
     	case 'update':
 
+    		fs.readdir(__dirname + "/public", (err, files) => {
+			  files.forEach(file => {
+			    console.log(file);
+			  });
+			})
+
     		console.log("[Write meta file]" + req.body.frameInfo)
     		var writer = fs.createWriteStream(metaDirectory + '/test' + req.body.frameInfo + '.txt');
     		writer.write(req.body.cachedMeta);
