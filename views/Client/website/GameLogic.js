@@ -45,7 +45,7 @@ function InitializeGame(apg) {
                         towerID = k;
                         towerStatsText.text = metadataForFrame.items[towerID].name + "\nFIRE RATE \nATTACK";
                         towerStatsFireBar.scale = new Phaser.Point(metadataForFrame.items[towerID].fireRate * 1.5, 0.6);
-                        towerStatsAttackBar.scale = new Phaser.Point(metadataForFrame.items[towerID].attack * 1.5, 0.6);
+                        towerStatsAttackBar.scale = new Phaser.Point(metadataForFrame.items[towerID].attack * 0.75, 0.6);
                     }
                 }
                 if (!overAtower) {

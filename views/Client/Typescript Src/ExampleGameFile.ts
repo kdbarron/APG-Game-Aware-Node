@@ -174,7 +174,7 @@ function InitializeGame(apg: APGSys): void {
                         /* display text and rectangles properly */
                         towerStatsText.text = metadataForFrame.items[towerID].name + "\nFIRE RATE \nATTACK";
                         towerStatsFireBar.scale = new Phaser.Point(metadataForFrame.items[towerID].fireRate * 1.5, 0.6);
-                        towerStatsAttackBar.scale = new Phaser.Point(metadataForFrame.items[towerID].attack * 1.5, 0.6);
+                        towerStatsAttackBar.scale = new Phaser.Point(metadataForFrame.items[towerID].attack * 0.75, 0.6);
                     }
                 }
 
@@ -248,7 +248,6 @@ function InitializeGame(apg: APGSys): void {
                     //Create graphics of enemy information
                     for (var i: number = 0; i < enemyMetadataForFrame.info.length; i++) {
                         var enemyInformationPopup: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 30, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
-                        console.log('assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = () => {
                             /*
                             //on cursor mouseover, go through enemies array and create phaser sprite on top of enemies of matching type
@@ -285,8 +284,6 @@ function InitializeGame(apg: APGSys): void {
 
                         waveImages.push(enemyInformationPopup);
                         waveText.push(enemyInformationText);
-
-                        console.log("created something");
                     }
 
                     waveNumber = enemyMetadataForFrame.waveNumber;
