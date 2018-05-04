@@ -95,14 +95,14 @@ function InitializeGame(apg) {
                         phaserGameWorld.removeChild(waveImages[i]);
                     }
                     for (var i = 0; i < enemyMetadataForFrame.info.length; i++) {
-                        var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
+                        var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 30, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         console.log('assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = function () {
                         };
                         phaserGameWorld.addChild(enemyInformationPopup);
                         var enemyInformationText = new Phaser.Text(apg.g, 100, 0, "", { font: '12px Helvetica', fill: '#C0C0C0' });
                         enemyInformationText.anchor = new Phaser.Point(0, 0);
-                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHEALTH: " + enemyMetadataForFrame.info[i].health + "\nSPEED: " + enemyMetadataForFrame.info[i].speed + "\nATTACK:" + enemyMetadataForFrame.info[i].attack;
+                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth: " + enemyMetadataForFrame.info[i].health + "\nSpeed: " + enemyMetadataForFrame.info[i].speed + "\nAttack:" + enemyMetadataForFrame.info[i].attack;
                         enemyInformationPopup.addChild(enemyInformationText);
                         waveImages.push(enemyInformationPopup);
                         waveText.push(enemyInformationText);
