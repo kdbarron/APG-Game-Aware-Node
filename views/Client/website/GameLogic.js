@@ -95,7 +95,7 @@ function InitializeGame(apg) {
                         phaserGameWorld.removeChild(waveImages[i]);
                     }
                     for (var i = 0; i < enemyMetadataForFrame.info.length; i++) {
-                        var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/EnemyInformationPopup.png');
+                        var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = function () {
                         };
                         phaserGameWorld.addChild(enemyInformationPopup);

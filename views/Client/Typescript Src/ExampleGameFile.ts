@@ -224,16 +224,6 @@ function InitializeGame(apg: APGSys): void {
     // #region Enemy
     {
 
-        /*
-        // Setup callbacks with the metadata subsystem.
-        apg.Register<ServerEnemies>("enemies", updatedMetadataForNewFrame => {
-            // We register a simple callback that updates when the video frame has advanced and there is new metadata.
-            // We will use this metadata in game object frame updates to change what is displayed in the overlay.
-            // In theory, it would be more efficient to do the actual updating in this callback, but it's not a priority.
-            enemyMetadataForFrame = updatedMetadataForNewFrame;
-        });
-        */
-
         // Index in the Serverenemies array of the currently selected enemy.  We'll default to showing the first enemy.
         var enemyID: number = 0;
 
@@ -257,8 +247,7 @@ function InitializeGame(apg: APGSys): void {
 
                     //Create graphics of enemy information
                     for (var i: number = 0; i < enemyMetadataForFrame.info.length; i++) {
-
-                        var enemyInformationPopup: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/EnemyInformationPopup.png');
+                        var enemyInformationPopup: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = () => {
                             /*
                             //on cursor mouseover, go through enemies array and create phaser sprite on top of enemies of matching type
