@@ -41,7 +41,7 @@ of the twitch video plugin, which is normally a violation of the browser securit
 // around downloaded to clients before the app launches.
 
 function CacheGameAssets(c: Cacher): void {
-    c.images('assets', ['hudselect.png', 'TowerInformationPopup.png', 'background.png', 'EnemyInformationPopup.png', 'Rectangle.png']);
+    c.images('assets', ['hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
 	c.sounds('assets', ['click.mp3']);
 }
 
