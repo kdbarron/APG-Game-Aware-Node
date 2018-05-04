@@ -95,8 +95,7 @@ function InitializeGame(apg) {
                         phaserGameWorld.removeChild(waveImages[i]);
                     }
                     for (var i = 0; i < enemyMetadataForFrame.info.length; i++) {
-                        var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 30, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
-                        console.log('assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
+                        var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = function () {
                         };
                         phaserGameWorld.addChild(enemyInformationPopup);
@@ -106,7 +105,6 @@ function InitializeGame(apg) {
                         enemyInformationPopup.addChild(enemyInformationText);
                         waveImages.push(enemyInformationPopup);
                         waveText.push(enemyInformationText);
-                        console.log("created something");
                     }
                     waveNumber = enemyMetadataForFrame.waveNumber;
                 }
