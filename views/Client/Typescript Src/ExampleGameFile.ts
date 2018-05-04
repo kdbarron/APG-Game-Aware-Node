@@ -248,6 +248,7 @@ function InitializeGame(apg: APGSys): void {
                     //Create graphics of enemy information
                     for (var i: number = 0; i < enemyMetadataForFrame.info.length; i++) {
                         var enemyInformationPopup: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
+                        console.log('assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = () => {
                             /*
                             //on cursor mouseover, go through enemies array and create phaser sprite on top of enemies of matching type
