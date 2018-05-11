@@ -41,7 +41,7 @@ of the twitch video plugin, which is normally a violation of the browser securit
 // around downloaded to clients before the app launches.
 
 function CacheGameAssets(c: Cacher): void {
-    c.images('assets', ['hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
+    c.images('assets', ['blueorb.png', 'hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
 	c.sounds('assets', ['click.mp3']);
 }
 
@@ -231,6 +231,8 @@ function InitializeGame(apg: APGSys): void {
         var waveImages: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
         var waveText: Array<Phaser.Text> = new Array<Phaser.Text>();
 
+        var enemyHighlights: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
+
         //parent graphic to contain enemy graphics
         var enemyInformationArea: Phaser.Sprite = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
         enemyInformationArea.anchor = new Phaser.Point(0, 0);
@@ -245,11 +247,12 @@ function InitializeGame(apg: APGSys): void {
                         phaserGameWorld.removeChild(waveImages[i]);
                     }
 
+                    var overAenemy: boolean = false;
                     //Create graphics of enemy information
                     for (var i: number = 0; i < enemyMetadataForFrame.info.length; i++) {
                         var enemyInformationPopup: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = () => {
-                            /*
+                            
                             //on cursor mouseover, go through enemies array and create phaser sprite on top of enemies of matching type
                             if (enemyMetadataForFrame != null) {
                                 var x: number = enemyInformationPopup.x;
@@ -260,20 +263,25 @@ function InitializeGame(apg: APGSys): void {
 
                                 if (apg.g.input.activePointer.x >= x && apg.g.input.activePointer.x <= x + scaleX &&
                                     apg.g.input.activePointer.y >= y && apg.g.input.activePointer.y <= y + scaleY) {
-                                    for (var i: number = 0; i < enemyMetadataForFrame.enemies.length; i++) {
-                                        // We are over a enemy, so record its index.
-                                        enemyIndex = k;
-                                        overAenemy = true;
+                                    enemyID = i;
+                                    overAenemy = true;
+
+                                    console.log(overAenemy);
+
+                                    for (var k: number = 0; k < enemyMetadataForFrame.enemies.length; k++) {
+                                        var enemyHighlight: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 0, 'assets/blueorb.png');
 
                                         // Center the highlight on this enemy and make it visible.
-                                        enemyMouseHighlight.x = x;
-                                        enemyMouseHighlight.y = y;
-                                        enemyMouseHighlight.visible = true;
+                                        enemyHighlight.x = APGHelper.ScreenX(enemyMetadataForFrame.enemies[k].x);
+                                        enemyHighlight.y = APGHelper.ScreenY(enemyMetadataForFrame.enemies[k].y);
+                                        enemyHighlight.visible = true;
+                                        phaserGameWorld.addChild(enemyHighlight);
 
-                                        enemyID = enemyIndex;
+                                        enemyHighlights.push(enemyHighlight);
+
                                     }
                                 }
-                            }*/
+                            }
                         }
                         phaserGameWorld.addChild(enemyInformationPopup);
 
@@ -308,6 +316,13 @@ function InitializeGame(apg: APGSys): void {
 
                         waveImages.push(enemyInformationPopup);
                         waveText.push(enemyInformationText);
+                    }
+                    if (!overAenemy) {
+                        enemyID = -1;
+                        //remove all highlights from array
+                        for (var i: number = 0; i < enemyHighlights.length; i++) {
+                            phaserGameWorld.removeChild(enemyHighlights[i]);
+                        }
                     }
 
                     waveNumber = enemyMetadataForFrame.waveNumber;
