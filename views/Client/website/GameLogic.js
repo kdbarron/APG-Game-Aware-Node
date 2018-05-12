@@ -6,7 +6,7 @@ var APGHelper = (function () {
     return APGHelper;
 }());
 function CacheGameAssets(c) {
-    c.images('assets', ['blueorb.png', 'hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
+    c.images('assets', ['hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
     c.sounds('assets', ['click.mp3']);
 }
 function InitializeGame(apg) {
@@ -85,19 +85,6 @@ function InitializeGame(apg) {
         var waveNumber = -1;
         var waveImages = new Array();
         var waveText = new Array();
-        var enemyHighlights = new Array();
-        function highlightEnemies(enemyName) {
-            if (enemyMetadataForFrame != null) {
-                for (var i = 0; i < enemyMetadataForFrame.enemies.length; i++) {
-                    var enemy = enemyMetadataForFrame.enemies[i];
-                    if (enemy.enemyName == enemyName) {
-                        var enemyHighlight = new Phaser.Sprite(apg.g, 50, 50, 'assets/blueorb.png');
-                        phaserGameWorld.addChild(enemyHighlight);
-                        enemyHighlights.push(enemyHighlight);
-                    }
-                }
-            }
-        }
         var enemyInformationArea = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
         enemyInformationArea.anchor = new Phaser.Point(0, 0);
         enemyInformationArea.scale = new Phaser.Point(0.35, 0.9);
@@ -107,23 +94,9 @@ function InitializeGame(apg) {
                     for (var i = 0; i < waveImages.length; i++) {
                         phaserGameWorld.removeChild(waveImages[i]);
                     }
-                    var overAenemy = false;
                     for (var i = 0; i < enemyMetadataForFrame.info.length; i++) {
                         var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = function () {
-                            if (enemyMetadataForFrame != null) {
-                                var x = enemyInformationPopup.x;
-                                var y = enemyInformationPopup.y;
-                                var scaleX = enemyInformationPopup.scale.x;
-                                var scaleY = enemyInformationPopup.scale.y;
-                                if (apg.g.input.activePointer.x >= x && apg.g.input.activePointer.x <= x + scaleX &&
-                                    apg.g.input.activePointer.y >= y && apg.g.input.activePointer.y <= y + scaleY) {
-                                    enemyID = i;
-                                    overAenemy = true;
-                                    console.log(overAenemy);
-                                    highlightEnemies(enemyMetadataForFrame.info[i].enemyName);
-                                }
-                            }
                         };
                         phaserGameWorld.addChild(enemyInformationPopup);
                         var enemyInformationText = new Phaser.Text(apg.g, 100, 10, "", { font: '12px Helvetica', fill: '#C0C0C0' });
@@ -132,12 +105,6 @@ function InitializeGame(apg) {
                         enemyInformationPopup.addChild(enemyInformationText);
                         waveImages.push(enemyInformationPopup);
                         waveText.push(enemyInformationText);
-                    }
-                    if (!overAenemy) {
-                        enemyID = -1;
-                        for (var i = 0; i < enemyHighlights.length; i++) {
-                            phaserGameWorld.removeChild(enemyHighlights[i]);
-                        }
                     }
                     waveNumber = enemyMetadataForFrame.waveNumber;
                 }
