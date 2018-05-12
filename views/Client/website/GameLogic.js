@@ -111,19 +111,6 @@ function InitializeGame(apg) {
                     for (var i = 0; i < enemyMetadataForFrame.info.length; i++) {
                         var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = function () {
-                            if (enemyMetadataForFrame != null) {
-                                var x = enemyInformationPopup.x;
-                                var y = enemyInformationPopup.y;
-                                var scaleX = enemyInformationPopup.scale.x;
-                                var scaleY = enemyInformationPopup.scale.y;
-                                if (apg.g.input.activePointer.x >= x && apg.g.input.activePointer.x <= x + scaleX &&
-                                    apg.g.input.activePointer.y >= y && apg.g.input.activePointer.y <= y + scaleY) {
-                                    enemyID = i;
-                                    overAenemy = true;
-                                    console.log(overAenemy);
-                                    highlightEnemies(enemyMetadataForFrame.info[i].enemyName);
-                                }
-                            }
                         };
                         phaserGameWorld.addChild(enemyInformationPopup);
                         var enemyInformationText = new Phaser.Text(apg.g, 100, 10, "", { font: '12px Helvetica', fill: '#C0C0C0' });
