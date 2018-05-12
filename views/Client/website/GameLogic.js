@@ -6,7 +6,7 @@ var APGHelper = (function () {
     return APGHelper;
 }());
 function CacheGameAssets(c) {
-    c.images('assets', ['hudselect.png', 'TowerInformationPopup.png', 'background.png', 'EnemyInformationPopup.png', 'Rectangle.png']);
+    c.images('assets', ['hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
     c.sounds('assets', ['click.mp3']);
 }
 function InitializeGame(apg) {
