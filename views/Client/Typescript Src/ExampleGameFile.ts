@@ -265,7 +265,7 @@ function InitializeGame(apg: APGSys): void {
                     for (var i: number = 0; i < enemyMetadataForFrame.info.length; i++) {
                         var enemyInformationPopup: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         enemyInformationPopup.update = () => {
-                            /*
+                            
                             //on cursor mouseover, go through enemies array and create phaser sprite on top of enemies of matching type
                             if (enemyMetadataForFrame != null) {
                                 var x: number = enemyInformationPopup.x;
@@ -295,9 +295,9 @@ function InitializeGame(apg: APGSys): void {
                                         enemyHighlights.push(enemyHighlight);
 
                                     }
-                                    
+                                    */
                                 }
-                            }*/
+                            }
                         }
                         phaserGameWorld.addChild(enemyInformationPopup);
 
