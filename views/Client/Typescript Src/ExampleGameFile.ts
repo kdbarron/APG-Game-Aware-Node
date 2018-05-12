@@ -232,6 +232,19 @@ function InitializeGame(apg: APGSys): void {
         var waveText: Array<Phaser.Text> = new Array<Phaser.Text>();
 
         var enemyHighlights: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
+        function highlightEnemies(enemyName: string) : void {
+            if (enemyMetadataForFrame != null) {
+                for (var i: number = 0; i < enemyMetadataForFrame.enemies.length; i++) {
+                    var enemy = enemyMetadataForFrame.enemies[i];
+                    if (enemy.enemyName == enemyName) {
+                        var enemyHighlight: Phaser.Sprite = new Phaser.Sprite(apg.g, 50, 50, 'assets/blueorb.png');
+                        phaserGameWorld.addChild(enemyHighlight);
+                        enemyHighlights.push(enemyHighlight);
+                    }
+                }
+            }
+        }
+
 
         //parent graphic to contain enemy graphics
         var enemyInformationArea: Phaser.Sprite = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
@@ -268,6 +281,8 @@ function InitializeGame(apg: APGSys): void {
 
                                     console.log(overAenemy);
 
+                                    highlightEnemies(enemyMetadataForFrame.info[i].enemyName);
+                                    /*
                                     for (var k: number = 0; k < enemyMetadataForFrame.enemies.length; k++) {
                                         var enemyHighlight: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 0, 'assets/blueorb.png');
 
@@ -280,6 +295,7 @@ function InitializeGame(apg: APGSys): void {
                                         enemyHighlights.push(enemyHighlight);
 
                                     }
+                                    */
                                 }
                             }
                         }

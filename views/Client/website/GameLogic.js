@@ -86,6 +86,18 @@ function InitializeGame(apg) {
         var waveImages = new Array();
         var waveText = new Array();
         var enemyHighlights = new Array();
+        function highlightEnemies(enemyName) {
+            if (enemyMetadataForFrame != null) {
+                for (var i = 0; i < enemyMetadataForFrame.enemies.length; i++) {
+                    var enemy = enemyMetadataForFrame.enemies[i];
+                    if (enemy.enemyName == enemyName) {
+                        var enemyHighlight = new Phaser.Sprite(apg.g, 50, 50, 'assets/blueorb.png');
+                        phaserGameWorld.addChild(enemyHighlight);
+                        enemyHighlights.push(enemyHighlight);
+                    }
+                }
+            }
+        }
         var enemyInformationArea = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
         enemyInformationArea.anchor = new Phaser.Point(0, 0);
         enemyInformationArea.scale = new Phaser.Point(0.35, 0.9);
@@ -109,14 +121,7 @@ function InitializeGame(apg) {
                                     enemyID = i;
                                     overAenemy = true;
                                     console.log(overAenemy);
-                                    for (var k = 0; k < enemyMetadataForFrame.enemies.length; k++) {
-                                        var enemyHighlight = new Phaser.Sprite(apg.g, 0, 0, 'assets/blueorb.png');
-                                        enemyHighlight.x = APGHelper.ScreenX(enemyMetadataForFrame.enemies[k].x);
-                                        enemyHighlight.y = APGHelper.ScreenY(enemyMetadataForFrame.enemies[k].y);
-                                        enemyHighlight.visible = true;
-                                        phaserGameWorld.addChild(enemyHighlight);
-                                        enemyHighlights.push(enemyHighlight);
-                                    }
+                                    highlightEnemies(enemyMetadataForFrame.info[i].enemyName);
                                 }
                             }
                         };
