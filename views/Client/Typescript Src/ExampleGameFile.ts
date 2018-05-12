@@ -220,7 +220,7 @@ function InitializeGame(apg: APGSys): void {
     }
     // #endregion
 
-
+/*
     // #region Enemy
     {
 
@@ -273,7 +273,7 @@ function InitializeGame(apg: APGSys): void {
                                         enemyID = enemyIndex;
                                     }
                                 }
-                            }*/
+                            } *
                         }
                         phaserGameWorld.addChild(enemyInformationPopup);
 
@@ -399,8 +399,8 @@ function InitializeGame(apg: APGSys): void {
         }
         phaserGameWorld.addChild(enemyStatsText);
         //phaserGameWorld.addChild(enemyStatsFireBar);
-        */
+        *
     }
     // #endregion
-
+*/
 }
