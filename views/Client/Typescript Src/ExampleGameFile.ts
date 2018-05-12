@@ -306,30 +306,6 @@ function InitializeGame(apg: APGSys): void {
                         enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth: " + enemyMetadataForFrame.info[i].health + "\nSpeed: " + enemyMetadataForFrame.info[i].speed + "\nAttack:" + enemyMetadataForFrame.info[i].attack;
                         enemyInformationPopup.addChild(enemyInformationText);
 
-                        /* Rectangle representing the fire rate */
-                        var enemyStatsHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, -10, -63, 'assets/Rectangle.png');
-                        enemyStatsHealthBar.scale = new Phaser.Point(0.6, 0.6);
-                        enemyStatsHealthBar.tint = 0xFF6961;
-                        enemyStatsHealthBar.update = () => {
-                            if (enemyStatsHealthBar.parent != enemyInformationPopup) {
-                                enemyStatsHealthBar.parent.removeChild(enemyStatsHealthBar);
-                                enemyInformationPopup.addChild(enemyStatsHealthBar);
-                            }
-                        }
-                        phaserGameWorld.addChild(enemyStatsHealthBar);
-
-                        /* Rectangle representing the attack rate */
-                        var enemyStatsSpeedBar: Phaser.Sprite = new Phaser.Sprite(apg.g, -10, -43, 'assets/Rectangle.png');
-                        towerStatsAttackBar.scale = new Phaser.Point(0.6, 0.6);
-                        towerStatsAttackBar.tint = 0xE6C76A;
-                        towerStatsAttackBar.update = () => {
-                            if (towerStatsAttackBar.parent != towerMouseHighlight) {
-                                towerStatsAttackBar.parent.removeChild(towerStatsAttackBar);
-                                towerMouseHighlight.addChild(towerStatsAttackBar);
-                            }
-                        }
-                        phaserGameWorld.addChild(towerStatsAttackBar);
-
                         waveImages.push(enemyInformationPopup);
                         waveText.push(enemyInformationText);
                     }
