@@ -95,9 +95,9 @@ function InitializeGame(apg) {
                         phaserGameWorld.removeChild(waveImages[i]);
                     }
                     for (var i = 0; i < enemyMetadataForFrame.info.length; i++) {
-                        var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 40, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
+                        var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         phaserGameWorld.addChild(enemyInformationPopup);
-                        var enemyInformationText = new Phaser.Text(apg.g, 100, 0, "", { font: '12px Helvetica', fill: '#C0C0C0' });
+                        var enemyInformationText = new Phaser.Text(apg.g, 100, 20, "", { font: '12px Helvetica', fill: '#C0C0C0' });
                         enemyInformationText.anchor = new Phaser.Point(0, 0);
                         enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth: " + enemyMetadataForFrame.info[i].health + "\nSpeed: " + enemyMetadataForFrame.info[i].speed + "\nAttack:" + enemyMetadataForFrame.info[i].attack;
                         enemyInformationPopup.addChild(enemyInformationText);
