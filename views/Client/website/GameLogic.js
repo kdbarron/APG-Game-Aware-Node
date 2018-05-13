@@ -80,5 +80,38 @@ function InitializeGame(apg) {
         };
         phaserGameWorld.addChild(towerStatsAttackBar);
     }
+    {
+        var enemyID = 0;
+        var waveNumber = -1;
+        var waveImages = new Array();
+        var waveText = new Array();
+        var enemyInformationArea = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
+        enemyInformationArea.anchor = new Phaser.Point(0, 0);
+        enemyInformationArea.scale = new Phaser.Point(0.35, 0.9);
+        enemyInformationArea.update = function () {
+            if (enemyMetadataForFrame != null) {
+                if (enemyMetadataForFrame.waveNumber != waveNumber) {
+                    for (var i = 0; i < waveImages.length; i++) {
+                        phaserGameWorld.removeChild(waveImages[i]);
+                    }
+                    for (var i = 0; i < enemyMetadataForFrame.info.length; i++) {
+                        var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
+                        enemyInformationPopup.update = function () {
+                        };
+                        phaserGameWorld.addChild(enemyInformationPopup);
+                        var enemyInformationText = new Phaser.Text(apg.g, 100, 0, "", { font: '12px Helvetica', fill: '#C0C0C0' });
+                        enemyInformationText.anchor = new Phaser.Point(0, 0);
+                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHEALTH: " + enemyMetadataForFrame.info[i].health + "\nSPEED: " + enemyMetadataForFrame.info[i].speed + "\nATTACK:" + enemyMetadataForFrame.info[i].attack;
+                        enemyInformationPopup.addChild(enemyInformationText);
+                        waveImages.push(enemyInformationPopup);
+                        waveText.push(enemyInformationText);
+                        console.log("created something");
+                    }
+                    waveNumber = enemyMetadataForFrame.waveNumber;
+                }
+            }
+        };
+        phaserGameWorld.addChild(enemyInformationArea);
+    }
 }
 //# sourceMappingURL=GameLogic.js.map

@@ -220,7 +220,7 @@ function InitializeGame(apg: APGSys): void {
     }
     // #endregion
 
-/*
+
     // #region Enemy
     {
 
@@ -273,7 +273,7 @@ function InitializeGame(apg: APGSys): void {
                                         enemyID = enemyIndex;
                                     }
                                 }
-                            } *
+                            } */
                         }
                         phaserGameWorld.addChild(enemyInformationPopup);
 
@@ -294,113 +294,6 @@ function InitializeGame(apg: APGSys): void {
 
         }
         phaserGameWorld.addChild(enemyInformationArea);
-
-
-        /*
-
-
-        var enemyMouseHighlight: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 0, 'assets/EnemyInformationPopup.png');
-        //enemyMouseHighlight.blendMode = PIXI.blendModes.ADD;
-        enemyMouseHighlight.anchor = new Phaser.Point(0.4, 0.75);
-        enemyMouseHighlight.scale = new Phaser.Point(1, 1);
-        enemyMouseHighlight.update = () => {
-            lastClickDelay--;
-            if (enemyMetadataForFrame != null) {
-                var overAenemy: boolean = false;
-                var enemyIndex = -1;
-                for (var k: number = 0; k < enemyMetadataForFrame.info.length; k++) {
-                    // get the screen coordinates that have been passed down as metadata.
-
-                    //x = topleftX and y = topLeftY
-                    var x: number = APGHelper.ScreenX(enemyMetadataForFrame.items[k].x);
-                    var y: number = APGHelper.ScreenY(enemyMetadataForFrame.items[k].y);
-
-                    //scaleX = width and sccaleY = height
-                    var scaleX: number = APGHelper.ScreenX(enemyMetadataForFrame.items[k].scaleX);
-                    var scaleY: number = APGHelper.ScreenY(enemyMetadataForFrame.items[k].scaleY);
-
-                    // Test if our mouse is close to the screen space coordinates of the current enemy.
-                    // This test is simple and hard-coded for this demo.
-                    if (apg.g.input.activePointer.x >= x && apg.g.input.activePointer.x <= x + scaleX &&
-                        apg.g.input.activePointer.y >= y && apg.g.input.activePointer.y <= y + scaleY) {
-
-                        // We are over a enemy, so record its index.
-                        enemyIndex = k;
-                        overAenemy = true;
-
-                        // Center the highlight on this enemy and make it visible.
-                        enemyMouseHighlight.x = x;
-                        enemyMouseHighlight.y = y;
-                        enemyMouseHighlight.visible = true;
-
-                        enemyID = enemyIndex;
-                    }
-                }
-
-                if (!overAenemy) {
-                    // The case where we are not over a enemy.  Make the highlight invisible and turn off targeting
-                    // if the mouse was clicked.
-                    enemyMouseHighlight.visible = false;
-                    enemyID = -1;
-                    lastClickDelay = 20;
-                }
-            }
-        }
-        phaserGameWorld.addChild(enemyMouseHighlight);
-
-        // _____ Background Graphic  _______
-
-        // This is a small bit of art that will cover up the binary data in the video frame.
-        // It is also the back ground that stat text will be drawn over.
-        var backgroundCoveringBinaryEncoding: Phaser.Sprite = new Phaser.Sprite(apg.g, -640, -320, 'assets/background.png');
-        phaserGameWorld.addChild(backgroundCoveringBinaryEncoding);
-
-        // _____ Stats Text _______
-
-        // This is statistic text.  It will display game logic metadata for the currently selected enemy if, in fact, a enemy is currently selected.
-        var enemyStatsText: Phaser.Text = new Phaser.Text(apg.g, enemyMouseHighlight.x, enemyMouseHighlight.y, "", { font: '12px Helvetica', fill: '#C0C0C0' });
-        enemyStatsText.anchor = new Phaser.Point(1.0, 1.35);
-
-        //The Rectangle representing the fire rate
-        //var enemyStatsFireBar: Phaser.Graphics = new Phaser.Graphics(apg.g, 0, 0);
-        var enemyStatsFireBar: Phaser.Rectangle = new Phaser.Rectangle(0, 0, 0, 0);
-
-
-        //Showing the game data when the enemy is being hovered over
-        enemyStatsText.update = () => {
-            if (enemyID != -1 && enemyMetadataForFrame != null && enemyMetadataForFrame != undefined) {
-
-                enemyStatsText.x = enemyMouseHighlight.x;
-                enemyStatsText.y = enemyMouseHighlight.y;
-
-                //shows the text
-                enemyStatsText.visible = true;
-                enemyStatsText.text = enemyMetadataForFrame.items[enemyID].name + "\nFIRE RATE: \nATTACK:";
-
-                /*draws the rectangles
-                enemyStatsFireBar.visible = true;
-                enemyStatsFireBar.beginFill(0xff000);
-                enemyStatsFireBar.drawRect(enemyMouseHighlight.x, enemyMouseHighlight.y, enemyMetadataForFrame.items[enemyID].fireRate * 100, 100);
-                */
-                /*
-                enemyStatsFireBar.width = enemyMetadataForFrame.items[enemyID].fireRate * 10;
-                enemyStatsFireBar.height = 10;
-                enemyStatsFireBar.x = enemyMouseHighlight.x;
-                enemyStatsFireBar.y = enemyMouseHighlight.y;
-
-                //*/
-
-        /*
-            }
-            else {
-                enemyStatsText.visible = false;
-                //enemyStatsFireBar.visible = false;
-            }
-        }
-        phaserGameWorld.addChild(enemyStatsText);
-        //phaserGameWorld.addChild(enemyStatsFireBar);
-        *
     }
     // #endregion
-*/
 }
