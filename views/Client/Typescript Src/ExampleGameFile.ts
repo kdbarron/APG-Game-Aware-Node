@@ -259,8 +259,8 @@ function InitializeGame(apg: APGSys): void {
                     enemyInformationPopup.addChild(enemyInformationText);
 
                     /* Rectangle representing the health */
-                    var enemyHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 110, 30, 'assets/Rectangle.png');
-                    enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.05, 0.6);
+                    var enemyHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 170, 30, 'assets/Rectangle.png');
+                    enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.01, 0.6);
                     enemyHealthBar.tint = 0xFF6961;
                     /*
                     enemyHealthBar.update = () => {
@@ -274,8 +274,8 @@ function InitializeGame(apg: APGSys): void {
                     enemyInformationPopup.addChild(enemyHealthBar);
 
                     /* Rectangle representing the speed */
-                    var enemySpeedBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 110, 50, 'assets/Rectangle.png');
-                    enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].speed * 1, 0.6);
+                    var enemySpeedBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 170, 50, 'assets/Rectangle.png');
+                    enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].speed * 0.5, 0.6);
                     enemySpeedBar.tint = 0x3299ff;
                     /*
                     enemySpeedBar.update = () => {
@@ -288,7 +288,7 @@ function InitializeGame(apg: APGSys): void {
                     enemyInformationPopup.addChild(enemySpeedBar);
 
                     /* Rectangle representing the attack */
-                    var enemyAttackBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 110, 70, 'assets/Rectangle.png');
+                    var enemyAttackBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 170, 70, 'assets/Rectangle.png');
                     enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].attack * 2, 0.6);
                     enemyAttackBar.tint = 0xE6C76A;
                     /*
