@@ -222,8 +222,8 @@ function InitializeGame(apg: APGSys): void {
         var radiusImages: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
 
 
-        var radiusHighlightHolder: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 0, 'assets/Rectangle.png');
-        //radiusHighlightHolder.scale = new Phaser.Point(1, 1);
+        var radiusHighlightHolder: Phaser.Sprite = new Phaser.Sprite(apg.g, 10, 0, 'assets/Rectangle.png');
+        radiusHighlightHolder.scale = new Phaser.Point(8, 4);
         radiusHighlightHolder.update = () => {
             if (metadataForFrame != null) {
                 //remove all circles 
@@ -231,24 +231,30 @@ function InitializeGame(apg: APGSys): void {
                     phaserGameWorld.removeChild(radiusImages[i]);
                 }
 
-                //add all circles
-                for (var k: number = 0; k < metadataForFrame.items.length; k++) {
+                if (apg.g.input.activePointer.x >= radiusHighlightHolder.x &&
+                    apg.g.input.activePointer.x <= radiusHighlightHolder.x + radiusHighlightHolder.width &&
+                    apg.g.input.activePointer.y >= radiusHighlightHolder.y &&
+                    apg.g.input.activePointer.y <= radiusHighlightHolder.y + radiusHighlightHolder.height) {
 
-                    var leftX: number = APGHelper.ScreenX(metadataForFrame.items[k].x);
-                    var topY: number = APGHelper.ScreenY(metadataForFrame.items[k].y);
+                    //add all circles
+                    for (var k: number = 0; k < metadataForFrame.items.length; k++) {
 
-                    //scaleX = width and sccaleY = height
-                    var rightX: number = APGHelper.ScreenX(metadataForFrame.items[k].scaleX + metadataForFrame.items[k].x);
-                    var bottomY: number = APGHelper.ScreenY(metadataForFrame.items[k].y - metadataForFrame.items[k].scaleY);
+                        var leftX: number = APGHelper.ScreenX(metadataForFrame.items[k].x);
+                        var topY: number = APGHelper.ScreenY(metadataForFrame.items[k].y);
 
-                    var radius: number = metadataForFrame.items[k].radius * .135;
+                        //scaleX = width and sccaleY = height
+                        var rightX: number = APGHelper.ScreenX(metadataForFrame.items[k].scaleX + metadataForFrame.items[k].x);
+                        var bottomY: number = APGHelper.ScreenY(metadataForFrame.items[k].y - metadataForFrame.items[k].scaleY);
 
-                    var radiusSprite: Phaser.Sprite = new Phaser.Sprite(apg.g, (leftX + rightX) / 2 - radius, (topY + bottomY) / 2 - radius, 'assets/redCircle.png');
-                    radiusSprite.scale = new Phaser.Point(radius, radius);
-                    radiusSprite.position = new Phaser.Point((leftX + rightX - radiusSprite.width) / 2, (topY + bottomY - radiusSprite.height)/2);
-                    radiusSprite.alpha = 0.3;
-                    phaserGameWorld.addChild(radiusSprite);
-                    radiusImages.push(radiusSprite);
+                        var radius: number = metadataForFrame.items[k].radius * .135;
+
+                        var radiusSprite: Phaser.Sprite = new Phaser.Sprite(apg.g, (leftX + rightX) / 2 - radius, (topY + bottomY) / 2 - radius, 'assets/redCircle.png');
+                        radiusSprite.scale = new Phaser.Point(radius, radius);
+                        radiusSprite.position = new Phaser.Point((leftX + rightX - radiusSprite.width) / 2, (topY + bottomY - radiusSprite.height) / 2);
+                        radiusSprite.alpha = 0.3;
+                        phaserGameWorld.addChild(radiusSprite);
+                        radiusImages.push(radiusSprite);
+                    }
                 }
             }
 
