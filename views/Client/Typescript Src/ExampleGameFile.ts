@@ -223,7 +223,7 @@ function InitializeGame(apg: APGSys): void {
 
 
         var radiusHighlightHolder: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 0, 'assets/Rectangle.png');
-        radiusHighlightHolder.scale = new Phaser.Point(0, 0);
+        //radiusHighlightHolder.scale = new Phaser.Point(1, 1);
         radiusHighlightHolder.update = () => {
             if (metadataForFrame != null) {
                 //remove all circles 

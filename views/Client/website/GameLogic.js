@@ -81,7 +81,6 @@ function InitializeGame(apg) {
         phaserGameWorld.addChild(towerStatsAttackBar);
         var radiusImages = new Array();
         var radiusHighlightHolder = new Phaser.Sprite(apg.g, 0, 0, 'assets/Rectangle.png');
-        radiusHighlightHolder.scale = new Phaser.Point(0, 0);
         radiusHighlightHolder.update = function () {
             if (metadataForFrame != null) {
                 for (var i = 0; i < radiusImages.length; i++) {
