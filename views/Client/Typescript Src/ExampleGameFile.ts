@@ -241,12 +241,12 @@ function InitializeGame(apg: APGSys): void {
                     var rightX: number = APGHelper.ScreenX(metadataForFrame.items[k].scaleX + metadataForFrame.items[k].x);
                     var bottomY: number = APGHelper.ScreenY(metadataForFrame.items[k].y - metadataForFrame.items[k].scaleY);
 
-                    var radius: number = metadataForFrame.items[k].radius * .1;
+                    var radius: number = metadataForFrame.items[k].radius * .125;
 
                     var radiusSprite: Phaser.Sprite = new Phaser.Sprite(apg.g, (leftX + rightX) / 2 - radius, (topY + bottomY) / 2 - radius, 'assets/redCircle.png');
                     radiusSprite.scale = new Phaser.Point(radius, radius);
                     radiusSprite.position = new Phaser.Point((leftX + rightX - radiusSprite.width) / 2, (topY + bottomY - radiusSprite.height)/2);
-                    radiusSprite.alpha = 0.2;
+                    radiusSprite.alpha = 0.3;
                     phaserGameWorld.addChild(radiusSprite);
                     radiusImages.push(radiusSprite);
                 }
