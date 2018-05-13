@@ -80,7 +80,7 @@ function InitializeGame(apg) {
         };
         phaserGameWorld.addChild(towerStatsAttackBar);
         var radiusImages = new Array();
-        var radiusHighlightHolder = new Phaser.Sprite(apg.g, 0, 50, 'assets/Rectangle.png');
+        var radiusHighlightHolder = new Phaser.Sprite(apg.g, 0, 100, 'assets/Rectangle.png');
         radiusHighlightHolder.scale = new Phaser.Point(8, 4);
         radiusHighlightHolder.update = function () {
             if (metadataForFrame != null) {
@@ -108,6 +108,9 @@ function InitializeGame(apg) {
             }
         };
         phaserGameWorld.addChild(radiusHighlightHolder);
+        var radiusToggleText = new Phaser.Text(apg.g, 0, 0, "", { font: '12px Helvetica', fill: '#C0C0C0' });
+        radiusToggleText.text = "Tower attack radius";
+        radiusHighlightHolder.addChild(radiusToggleText);
     }
     {
         var waveNumber = -1;
