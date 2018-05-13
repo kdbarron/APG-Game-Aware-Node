@@ -85,7 +85,7 @@ function InitializeGame(apg) {
         var waveImages = new Array();
         var enemyInformationArea = new Phaser.Sprite(apg.g, 750, 70, 'assets/background.png');
         enemyInformationArea.anchor = new Phaser.Point(0, 0);
-        enemyInformationArea.scale = new Phaser.Point(0.5, 0.9);
+        enemyInformationArea.scale = new Phaser.Point(0.5, 0.8);
         enemyInformationArea.update = function () {
             if (enemyMetadataForFrame != null && enemyMetadataForFrame.waveNumber != waveNumber) {
                 for (var i = 0; i < waveImages.length; i++) {
@@ -99,7 +99,7 @@ function InitializeGame(apg) {
                     enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth: \nSpeed: \nAttack:";
                     enemyInformationPopup.addChild(enemyInformationText);
                     var enemyHealthBar = new Phaser.Sprite(apg.g, 140, 30, 'assets/Rectangle.png');
-                    enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.01, 0.6);
+                    enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.005, 0.6);
                     enemyHealthBar.tint = 0xFF6961;
                     enemyInformationPopup.addChild(enemyHealthBar);
                     var enemySpeedBar = new Phaser.Sprite(apg.g, 140, 50, 'assets/Rectangle.png');

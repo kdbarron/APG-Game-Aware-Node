@@ -238,7 +238,7 @@ function InitializeGame(apg: APGSys): void {
         //parent graphic to contain enemy graphics
         var enemyInformationArea: Phaser.Sprite = new Phaser.Sprite(apg.g, 750, 70, 'assets/background.png');
         enemyInformationArea.anchor = new Phaser.Point(0, 0);
-        enemyInformationArea.scale = new Phaser.Point(0.5, 0.9);
+        enemyInformationArea.scale = new Phaser.Point(0.5, 0.8);
         enemyInformationArea.update = () => {
 
             if (enemyMetadataForFrame != null && enemyMetadataForFrame.waveNumber != waveNumber) {
@@ -260,7 +260,7 @@ function InitializeGame(apg: APGSys): void {
 
                     /* Rectangle representing the health */
                     var enemyHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 140, 30, 'assets/Rectangle.png');
-                    enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.01, 0.6);
+                    enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.005, 0.6);
                     enemyHealthBar.tint = 0xFF6961;
                     /*
                     enemyHealthBar.update = () => {
