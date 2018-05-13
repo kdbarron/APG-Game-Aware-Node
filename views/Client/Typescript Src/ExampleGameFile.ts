@@ -223,6 +223,7 @@ function InitializeGame(apg: APGSys): void {
 
 
         var radiusHighlightHolder: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 140, 'assets/Rectangle.png');
+        radiusHighlightHolder.tint = 0x292929;
         radiusHighlightHolder.scale = new Phaser.Point(8, 4);
         radiusHighlightHolder.update = () => {
             if (metadataForFrame != null) {
