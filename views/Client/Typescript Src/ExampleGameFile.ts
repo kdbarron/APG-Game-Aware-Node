@@ -228,7 +228,7 @@ function InitializeGame(apg: APGSys): void {
             if (metadataForFrame != null) {
                 //remove all circles 
                 for (var i: number = 0; i < radiusImages.length; i++) {
-                    phaserGameWorld.removeChild(radiusImages[i]);
+                 //   phaserGameWorld.removeChild(radiusImages[i]);
                 }
 
                 //add all circles
@@ -247,6 +247,7 @@ function InitializeGame(apg: APGSys): void {
                     radiusSprite.scale = new Phaser.Point(radius, radius);
                     phaserGameWorld.addChild(radiusSprite);
                     radiusImages.push(radiusSprite);
+                    console.log(radiusSprite.position);
                 }
             }
 
