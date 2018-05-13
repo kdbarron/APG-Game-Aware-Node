@@ -236,7 +236,7 @@ function InitializeGame(apg: APGSys): void {
         */
 
         //parent graphic to contain enemy graphics
-        var enemyInformationArea: Phaser.Sprite = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
+        var enemyInformationArea: Phaser.Sprite = new Phaser.Sprite(apg.g, 700, 75, 'assets/background.png');
         enemyInformationArea.anchor = new Phaser.Point(0, 0);
         enemyInformationArea.scale = new Phaser.Point(0.35, 0.9);
         enemyInformationArea.update = () => {
@@ -259,7 +259,7 @@ function InitializeGame(apg: APGSys): void {
                     enemyInformationPopup.addChild(enemyInformationText);
 
                     /* Rectangle representing the health */
-                    var enemyHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 150, 30, 'assets/Rectangle.png');
+                    var enemyHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 140, 30, 'assets/Rectangle.png');
                     enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.01, 0.6);
                     enemyHealthBar.tint = 0xFF6961;
                     /*
@@ -274,7 +274,7 @@ function InitializeGame(apg: APGSys): void {
                     enemyInformationPopup.addChild(enemyHealthBar);
 
                     /* Rectangle representing the speed */
-                    var enemySpeedBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 150, 50, 'assets/Rectangle.png');
+                    var enemySpeedBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 140, 50, 'assets/Rectangle.png');
                     enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].speed * 0.5, 0.6);
                     enemySpeedBar.tint = 0x3299ff;
                     /*
@@ -288,8 +288,8 @@ function InitializeGame(apg: APGSys): void {
                     enemyInformationPopup.addChild(enemySpeedBar);
 
                     /* Rectangle representing the attack */
-                    var enemyAttackBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 150, 70, 'assets/Rectangle.png');
-                    enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].attack * 2, 0.6);
+                    var enemyAttackBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 140, 70, 'assets/Rectangle.png');
+                    enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].attack * 1, 0.6);
                     enemyAttackBar.tint = 0xE6C76A;
                     /*
                     enemyAttackBar.update = () => {
