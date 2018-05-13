@@ -108,6 +108,7 @@ function InitializeGame(apg) {
                                 enemyHealthBar.parent.removeChild(enemyHealthBar);
                                 enemyInformationPopup.addChild(enemyHealthBar);
                             }
+                            console.log(enemyHealthBar.position);
                         };
                         phaserGameWorld.addChild(enemyHealthBar);
                         var enemySpeedBar = new Phaser.Sprite(apg.g, -10, -43, 'assets/Rectangle.png');
@@ -131,6 +132,7 @@ function InitializeGame(apg) {
                         };
                         phaserGameWorld.addChild(enemyAttackBar);
                         enemyInformationPopup.update = function () {
+                            console.log(i);
                             if (enemyMetadataForFrame != null) {
                                 for (var j = 0; j < enemyMetadataForFrame.info.length; j++) {
                                     if (i == j) {

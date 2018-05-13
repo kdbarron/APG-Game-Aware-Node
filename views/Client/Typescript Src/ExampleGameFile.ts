@@ -263,6 +263,7 @@ function InitializeGame(apg: APGSys): void {
                                 enemyHealthBar.parent.removeChild(enemyHealthBar);
                                 enemyInformationPopup.addChild(enemyHealthBar);
                             }
+                            console.log(enemyHealthBar.position);
                         }
                         phaserGameWorld.addChild(enemyHealthBar);
 
@@ -291,6 +292,7 @@ function InitializeGame(apg: APGSys): void {
                         phaserGameWorld.addChild(enemyAttackBar);
 
                         enemyInformationPopup.update = () => {
+                            console.log(i);
                             /* display text and rectangles properly */
                             if (enemyMetadataForFrame != null) {
                                 for (var j: number = 0; j < enemyMetadataForFrame.info.length; j++) {
