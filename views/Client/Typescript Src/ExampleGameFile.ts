@@ -243,7 +243,7 @@ function InitializeGame(apg: APGSys): void {
 
                     var radius: number = metadataForFrame.items[k].radius * .1;
 
-                    var radiusSprite: Phaser.Sprite = new Phaser.Sprite(apg.g, (leftX + rightX) / 2, (topY + bottomY) / 2, 'assets/redCircle.png');
+                    var radiusSprite: Phaser.Sprite = new Phaser.Sprite(apg.g, (leftX + rightX) / 2 - radius, (topY + bottomY) / 2 - radius, 'assets/redCircle.png');
                     radiusSprite.scale = new Phaser.Point(radius, radius);
                     radiusSprite.alpha = 0.2;
                     phaserGameWorld.addChild(radiusSprite);
