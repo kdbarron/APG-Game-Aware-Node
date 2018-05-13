@@ -119,7 +119,7 @@ function InitializeGame(apg) {
         var waveImages = new Array();
         var enemyInformationArea = new Phaser.Sprite(apg.g, 750, 70, 'assets/background.png');
         enemyInformationArea.anchor = new Phaser.Point(0, 0);
-        enemyInformationArea.scale = new Phaser.Point(0.5, 0.8);
+        enemyInformationArea.scale = new Phaser.Point(0.5, 0.9);
         enemyInformationArea.update = function () {
             if (enemyMetadataForFrame != null && enemyMetadataForFrame.waveNumber != waveNumber) {
                 for (var i = 0; i < waveImages.length; i++) {

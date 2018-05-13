@@ -288,7 +288,7 @@ function InitializeGame(apg: APGSys): void {
         //parent graphic to contain enemy graphics
         var enemyInformationArea: Phaser.Sprite = new Phaser.Sprite(apg.g, 750, 70, 'assets/background.png');
         enemyInformationArea.anchor = new Phaser.Point(0, 0);
-        enemyInformationArea.scale = new Phaser.Point(0.5, 0.8);
+        enemyInformationArea.scale = new Phaser.Point(0.5, 0.9);
         enemyInformationArea.update = () => {
 
             if (enemyMetadataForFrame != null && enemyMetadataForFrame.waveNumber != waveNumber) {
