@@ -84,6 +84,7 @@ function InitializeGame(apg) {
         radiusHighlightHolder.update = function () {
             if (metadataForFrame != null) {
                 for (var i = 0; i < radiusImages.length; i++) {
+                    phaserGameWorld.removeChild(radiusImages[i]);
                 }
                 for (var k = 0; k < metadataForFrame.items.length; k++) {
                     var leftX = APGHelper.ScreenX(metadataForFrame.items[k].x);
@@ -93,10 +94,10 @@ function InitializeGame(apg) {
                     var radius = metadataForFrame.items[k].radius * .1;
                     var radiusSprite = new Phaser.Sprite(apg.g, (leftX + rightX) / 2 - radius, (topY + bottomY) / 2 - radius, 'assets/redCircle.png');
                     radiusSprite.scale = new Phaser.Point(radius, radius);
+                    radiusSprite.position = new Phaser.Point((leftX + rightX) / 2 - radiusSprite.width, (topY + bottomY) / 2 - radiusSprite.height);
                     radiusSprite.alpha = 0.2;
                     phaserGameWorld.addChild(radiusSprite);
                     radiusImages.push(radiusSprite);
-                    console.log(radiusSprite.scale);
                 }
             }
         };

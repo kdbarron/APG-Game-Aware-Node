@@ -228,7 +228,7 @@ function InitializeGame(apg: APGSys): void {
             if (metadataForFrame != null) {
                 //remove all circles 
                 for (var i: number = 0; i < radiusImages.length; i++) {
-                 //   phaserGameWorld.removeChild(radiusImages[i]);
+                    phaserGameWorld.removeChild(radiusImages[i]);
                 }
 
                 //add all circles
@@ -245,10 +245,10 @@ function InitializeGame(apg: APGSys): void {
 
                     var radiusSprite: Phaser.Sprite = new Phaser.Sprite(apg.g, (leftX + rightX) / 2 - radius, (topY + bottomY) / 2 - radius, 'assets/redCircle.png');
                     radiusSprite.scale = new Phaser.Point(radius, radius);
+                    radiusSprite.position = new Phaser.Point((leftX + rightX) / 2 - radiusSprite.width, (topY + bottomY) / 2 - radiusSprite.height);
                     radiusSprite.alpha = 0.2;
                     phaserGameWorld.addChild(radiusSprite);
                     radiusImages.push(radiusSprite);
-                    console.log(radiusSprite.scale);
                 }
             }
 
