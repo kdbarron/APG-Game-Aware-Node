@@ -246,6 +246,7 @@ function InitializeGame(apg: APGSys): void {
 
                     //Create graphics of enemy information
                     for (var i: number = 0; i < enemyMetadataForFrame.info.length; i++) {
+                        var enemyID = i;
                         var enemyInformationPopup: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         phaserGameWorld.addChild(enemyInformationPopup);
 
@@ -292,11 +293,11 @@ function InitializeGame(apg: APGSys): void {
                         phaserGameWorld.addChild(enemyAttackBar);
 
                         enemyInformationPopup.update = () => {
-                            console.log(i);
+                            console.log(enemyID);
                             /* display text and rectangles properly */
                             if (enemyMetadataForFrame != null) {
                                 for (var j: number = 0; j < enemyMetadataForFrame.info.length; j++) {
-                                    if (i == j) {
+                                    if (enemyID == j) {
                                         enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].health * .5, 0.6);
                                         enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].speed * .5, 0.6);
                                         enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].attack * .5, 0.6);

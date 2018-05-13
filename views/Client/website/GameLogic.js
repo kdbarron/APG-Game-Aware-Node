@@ -94,6 +94,7 @@ function InitializeGame(apg) {
                         phaserGameWorld.removeChild(waveImages[i]);
                     }
                     for (var i = 0; i < enemyMetadataForFrame.info.length; i++) {
+                        var enemyID = i;
                         var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         phaserGameWorld.addChild(enemyInformationPopup);
                         var enemyInformationText = new Phaser.Text(apg.g, 100, 10, "", { font: '12px Helvetica', fill: '#C0C0C0' });
@@ -132,10 +133,10 @@ function InitializeGame(apg) {
                         };
                         phaserGameWorld.addChild(enemyAttackBar);
                         enemyInformationPopup.update = function () {
-                            console.log(i);
+                            console.log(enemyID);
                             if (enemyMetadataForFrame != null) {
                                 for (var j = 0; j < enemyMetadataForFrame.info.length; j++) {
-                                    if (i == j) {
+                                    if (enemyID == j) {
                                         enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].health * .5, 0.6);
                                         enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].speed * .5, 0.6);
                                         enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].attack * .5, 0.6);
