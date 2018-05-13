@@ -94,7 +94,7 @@ function InitializeGame(apg) {
                     var radius = metadataForFrame.items[k].radius * .1;
                     var radiusSprite = new Phaser.Sprite(apg.g, (leftX + rightX) / 2 - radius, (topY + bottomY) / 2 - radius, 'assets/redCircle.png');
                     radiusSprite.scale = new Phaser.Point(radius, radius);
-                    radiusSprite.position = new Phaser.Point((leftX + rightX) / 2 - radiusSprite.width, (topY + bottomY) / 2 - radiusSprite.height);
+                    radiusSprite.position = new Phaser.Point((leftX + rightX - radiusSprite.width) / 2, (topY + bottomY - radiusSprite.height) / 2);
                     radiusSprite.alpha = 0.2;
                     phaserGameWorld.addChild(radiusSprite);
                     radiusImages.push(radiusSprite);
