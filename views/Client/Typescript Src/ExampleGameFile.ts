@@ -173,7 +173,7 @@ function InitializeGame(apg: APGSys): void {
 
                         /* display text and rectangles properly */
                         towerStatsText.text = metadataForFrame.items[towerID].name + "\nFIRE RATE \nATTACK";
-                        towerStatsFireBar.scale = new Phaser.Point(metadataForFrame.items[towerID].fireRate * .5, 0.6);
+                        towerStatsFireBar.scale = new Phaser.Point(metadataForFrame.items[towerID].fireRate * 1, 0.6);
                         towerStatsAttackBar.scale = new Phaser.Point(metadataForFrame.items[towerID].attack * .5, 0.6);
                     }
                 }
@@ -260,7 +260,7 @@ function InitializeGame(apg: APGSys): void {
 
                     /* Rectangle representing the health */
                     var enemyHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 20, 20, 'assets/Rectangle.png');
-                    enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.5, 0.6);
+                    enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.25, 0.6);
                     enemyHealthBar.tint = 0xFF6961;
                     /*
                     enemyHealthBar.update = () => {
@@ -274,8 +274,8 @@ function InitializeGame(apg: APGSys): void {
                     enemyInformationPopup.addChild(enemyHealthBar);
 
                     /* Rectangle representing the speed */
-                    var enemySpeedBar: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 30, 'assets/Rectangle.png');
-                    enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].speed * 0.5, 0.6);
+                    var enemySpeedBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 20, 40, 'assets/Rectangle.png');
+                    enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].speed * 0.25, 0.6);
                     enemySpeedBar.tint = 0x3299ff;
                     /*
                     enemySpeedBar.update = () => {
@@ -288,8 +288,8 @@ function InitializeGame(apg: APGSys): void {
                     enemyInformationPopup.addChild(enemySpeedBar);
 
                     /* Rectangle representing the attack */
-                    var enemyAttackBar: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 40, 'assets/Rectangle.png');
-                    enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].attack * 0.5, 0.6);
+                    var enemyAttackBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 20, 60, 'assets/Rectangle.png');
+                    enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].attack * 0.25, 0.6);
                     enemyAttackBar.tint = 0xE6C76A;
                     /*
                     enemyAttackBar.update = () => {
