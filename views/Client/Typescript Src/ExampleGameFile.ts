@@ -260,7 +260,7 @@ function InitializeGame(apg: APGSys): void {
 
                         /* Rectangle representing the health */
                         var enemyHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 145, 31, 'assets/Rectangle.png');
-                        enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health / 15 * 0.15, 0.6);
+                        enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health / 15 * 0.1, 0.6);
                         enemyHealthBar.tint = 0xFF6961;
                         enemyInformationPopup.addChild(enemyHealthBar);
 
@@ -285,7 +285,7 @@ function InitializeGame(apg: APGSys): void {
 
                         /* Rectangle representing the health */
                         var enemyHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, 145, 31, 'assets/Rectangle.png');
-                        enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.15, 0.6);
+                        enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.1, 0.6);
                         enemyHealthBar.tint = 0xFF6961;
                         enemyInformationPopup.addChild(enemyHealthBar);
 
