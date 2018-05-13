@@ -98,15 +98,15 @@ function InitializeGame(apg) {
                     enemyInformationText.anchor = new Phaser.Point(0, 0);
                     enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth: \nSpeed: \nAttack:";
                     enemyInformationPopup.addChild(enemyInformationText);
-                    var enemyHealthBar = new Phaser.Sprite(apg.g, 170, 30, 'assets/Rectangle.png');
+                    var enemyHealthBar = new Phaser.Sprite(apg.g, 150, 30, 'assets/Rectangle.png');
                     enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * 0.01, 0.6);
                     enemyHealthBar.tint = 0xFF6961;
                     enemyInformationPopup.addChild(enemyHealthBar);
-                    var enemySpeedBar = new Phaser.Sprite(apg.g, 170, 50, 'assets/Rectangle.png');
+                    var enemySpeedBar = new Phaser.Sprite(apg.g, 150, 50, 'assets/Rectangle.png');
                     enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].speed * 0.5, 0.6);
                     enemySpeedBar.tint = 0x3299ff;
                     enemyInformationPopup.addChild(enemySpeedBar);
-                    var enemyAttackBar = new Phaser.Sprite(apg.g, 170, 70, 'assets/Rectangle.png');
+                    var enemyAttackBar = new Phaser.Sprite(apg.g, 150, 70, 'assets/Rectangle.png');
                     enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].attack * 2, 0.6);
                     enemyAttackBar.tint = 0xE6C76A;
                     enemyInformationPopup.addChild(enemyAttackBar);
