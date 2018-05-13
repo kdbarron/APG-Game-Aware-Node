@@ -241,7 +241,7 @@ function InitializeGame(apg: APGSys): void {
                     var rightX: number = APGHelper.ScreenX(metadataForFrame.items[k].scaleX + metadataForFrame.items[k].x);
                     var bottomY: number = APGHelper.ScreenY(metadataForFrame.items[k].y - metadataForFrame.items[k].scaleY);
 
-                    var radius: number = metadataForFrame.items[k].radius * .125;
+                    var radius: number = metadataForFrame.items[k].radius * .135;
 
                     var radiusSprite: Phaser.Sprite = new Phaser.Sprite(apg.g, (leftX + rightX) / 2 - radius, (topY + bottomY) / 2 - radius, 'assets/redCircle.png');
                     radiusSprite.scale = new Phaser.Point(radius, radius);
