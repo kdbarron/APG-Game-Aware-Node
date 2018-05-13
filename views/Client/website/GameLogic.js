@@ -81,7 +81,6 @@ function InitializeGame(apg) {
         phaserGameWorld.addChild(towerStatsAttackBar);
     }
     {
-        var enemyID = 0;
         var waveNumber = -1;
         var waveImages = new Array();
         var enemyInformationArea = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');

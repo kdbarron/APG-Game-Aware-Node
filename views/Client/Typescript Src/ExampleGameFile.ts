@@ -225,10 +225,13 @@ function InitializeGame(apg: APGSys): void {
     {
 
         // Index in the Serverenemies array of the currently selected enemy.  We'll default to showing the first enemy.
-        var enemyID: number = 0;
-
         var waveNumber: number = -1;
         var waveImages: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
+
+        interface EnemyPopup {
+            sprite: Phaser.Sprite;
+            enemyID: number;
+        }
 
         //parent graphic to contain enemy graphics
         var enemyInformationArea: Phaser.Sprite = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
