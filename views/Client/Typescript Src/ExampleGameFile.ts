@@ -247,7 +247,7 @@ function InitializeGame(apg: APGSys): void {
                     radiusSprite.scale = new Phaser.Point(radius, radius);
                     phaserGameWorld.addChild(radiusSprite);
                     radiusImages.push(radiusSprite);
-                    console.log(radiusSprite.position);
+                    console.log(radiusSprite.scale);
                 }
             }
 
