@@ -222,7 +222,7 @@ function InitializeGame(apg: APGSys): void {
         var radiusImages: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
 
 
-        var radiusHighlightHolder: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 100, 'assets/Rectangle.png');
+        var radiusHighlightHolder: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 140, 'assets/Rectangle.png');
         radiusHighlightHolder.scale = new Phaser.Point(8, 4);
         radiusHighlightHolder.update = () => {
             if (metadataForFrame != null) {
@@ -261,7 +261,8 @@ function InitializeGame(apg: APGSys): void {
         }
         phaserGameWorld.addChild(radiusHighlightHolder);
 
-        var radiusToggleText: Phaser.Text = new Phaser.Text(apg.g, 0, 0, "", { font: '12px Helvetica', fill: '#C0C0C0' });
+        var radiusToggleText: Phaser.Text = new Phaser.Text(apg.g, 10, 20, "", { font: '12px Helvetica', fill: '#C0C0C0' });
+        radiusToggleText.scale = new Phaser.Point(1 / 8, 1 / 4);
         radiusToggleText.text = "Tower attack radius"
         radiusHighlightHolder.addChild(radiusToggleText);
 
