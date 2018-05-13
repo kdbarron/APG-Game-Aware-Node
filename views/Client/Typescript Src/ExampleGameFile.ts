@@ -262,7 +262,7 @@ function InitializeGame(apg: APGSys): void {
         }
         phaserGameWorld.addChild(radiusHighlightHolder);
 
-        var radiusToggleText: Phaser.Text = new Phaser.Text(apg.g, 4, 6, "", { font: '12px Helvetica', fill: '#C0C0C0' });
+        var radiusToggleText: Phaser.Text = new Phaser.Text(apg.g, 3, 8, "", { font: '12px Helvetica', fill: '#C0C0C0' });
         radiusToggleText.scale = new Phaser.Point(1 / 8, 1 / 4);
         radiusToggleText.text = "Tower attack radius"
         radiusHighlightHolder.addChild(radiusToggleText);
