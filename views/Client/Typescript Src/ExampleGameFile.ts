@@ -41,7 +41,7 @@ of the twitch video plugin, which is normally a violation of the browser securit
 // around downloaded to clients before the app launches.
 
 function CacheGameAssets(c: Cacher): void {
-    c.images('assets', ['hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
+    c.images('assets', ['redCircle.png', 'hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
 	c.sounds('assets', ['click.mp3']);
 }
 
@@ -54,7 +54,7 @@ interface ServerTower{
     scaleX: number;
     scaleY: number;
     attack: number;
-    coolDown: number;
+    radius: number;
     fireRate: number;
     name: string;
 }
@@ -137,7 +137,7 @@ function InitializeGame(apg: APGSys): void {
         // We will do the logic in this game object to see if the mouse is down, and if so, we will
         // target that tower, if one is highlighted, or untarget otherwise.
 
-        /* Highlight Object */
+        // Highlight Object
         var towerMouseHighlight: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 0, 'assets/TowerInformationPopup.png');
         towerMouseHighlight.anchor = new Phaser.Point(0.4, 0.75);
         towerMouseHighlight.scale = new Phaser.Point(1, 1);
@@ -217,6 +217,41 @@ function InitializeGame(apg: APGSys): void {
             }
         }
         phaserGameWorld.addChild(towerStatsAttackBar);
+
+        //Tower radius highlight
+        var radiusImages: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
+
+
+        var radiusHighlightHolder: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 0, 'assets/Rectangle.png');
+        radiusHighlightHolder.scale = new Phaser.Point(0, 0);
+        radiusHighlightHolder.update = () => {
+            if (metadataForFrame != null) {
+                //remove all circles 
+                for (var i: number = 0; i < radiusImages.length; i++) {
+                    phaserGameWorld.removeChild(radiusImages[i]);
+                }
+
+                //add all circles
+                for (var k: number = 0; k < metadataForFrame.items.length; k++) {
+
+                    var leftX: number = APGHelper.ScreenX(metadataForFrame.items[k].x);
+                    var topY: number = APGHelper.ScreenY(metadataForFrame.items[k].y);
+
+                    //scaleX = width and sccaleY = height
+                    var rightX: number = APGHelper.ScreenX(metadataForFrame.items[k].scaleX + metadataForFrame.items[k].x);
+                    var bottomY: number = APGHelper.ScreenY(metadataForFrame.items[k].y - metadataForFrame.items[k].scaleY);
+
+                    var radius: number = metadataForFrame.items[k].radius * 10;
+
+                    var radiusSprite: Phaser.Sprite = new Phaser.Sprite(apg.g, leftX, topY, 'assets/redCircle.png');
+                    radiusSprite.scale = new Phaser.Point(radius, radius);
+                    phaserGameWorld.addChild(radiusSprite);
+                    radiusImages.push(radiusSprite);
+                }
+            }
+
+        }
+        phaserGameWorld.addChild(radiusHighlightHolder);
     }
     // #endregion
 
@@ -302,9 +337,6 @@ function InitializeGame(apg: APGSys): void {
                         enemyInformationPopup.addChild(enemyAttackBar);
 
                         waveImages.push(enemyInformationPopup);
-                       // waveImages.push(enemyHealthBar);
-                        //waveImages.push(enemySpeedBar);
-                        //waveImages.push(enemyAttackBar);
                     }
                 }
                 waveNumber = enemyMetadataForFrame.waveNumber;

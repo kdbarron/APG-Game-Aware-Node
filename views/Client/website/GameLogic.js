@@ -6,7 +6,7 @@ var APGHelper = (function () {
     return APGHelper;
 }());
 function CacheGameAssets(c) {
-    c.images('assets', ['hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
+    c.images('assets', ['redCircle.png', 'hudselect.png', 'TowerInformationPopup.png', 'background.png', 'HoverbuggyInformationPopup.png', 'HoverbossInformationPopup.png', 'HovercopterInformationPopup.png', 'HovertankInformationPopup.png', 'Rectangle.png']);
     c.sounds('assets', ['click.mp3']);
 }
 function InitializeGame(apg) {
@@ -79,6 +79,28 @@ function InitializeGame(apg) {
             }
         };
         phaserGameWorld.addChild(towerStatsAttackBar);
+        var radiusImages = new Array();
+        var radiusHighlightHolder = new Phaser.Sprite(apg.g, 0, 0, 'assets/Rectangle.png');
+        radiusHighlightHolder.scale = new Phaser.Point(0, 0);
+        radiusHighlightHolder.update = function () {
+            if (metadataForFrame != null) {
+                for (var i = 0; i < radiusImages.length; i++) {
+                    phaserGameWorld.removeChild(radiusImages[i]);
+                }
+                for (var k = 0; k < metadataForFrame.items.length; k++) {
+                    var leftX = APGHelper.ScreenX(metadataForFrame.items[k].x);
+                    var topY = APGHelper.ScreenY(metadataForFrame.items[k].y);
+                    var rightX = APGHelper.ScreenX(metadataForFrame.items[k].scaleX + metadataForFrame.items[k].x);
+                    var bottomY = APGHelper.ScreenY(metadataForFrame.items[k].y - metadataForFrame.items[k].scaleY);
+                    var radius = metadataForFrame.items[k].radius * 10;
+                    var radiusSprite = new Phaser.Sprite(apg.g, leftX, topY, 'assets/redCircle.png');
+                    radiusSprite.scale = new Phaser.Point(radius, radius);
+                    phaserGameWorld.addChild(radiusSprite);
+                    radiusImages.push(radiusSprite);
+                }
+            }
+        };
+        phaserGameWorld.addChild(radiusHighlightHolder);
     }
     {
         var waveNumber = -1;
