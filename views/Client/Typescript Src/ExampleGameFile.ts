@@ -229,7 +229,6 @@ function InitializeGame(apg: APGSys): void {
 
         var waveNumber: number = -1;
         var waveImages: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
-        var waveText: Array<Phaser.Text> = new Array<Phaser.Text>();
 
         //parent graphic to contain enemy graphics
         var enemyInformationArea: Phaser.Sprite = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
@@ -250,15 +249,55 @@ function InitializeGame(apg: APGSys): void {
                         var enemyInformationPopup: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         phaserGameWorld.addChild(enemyInformationPopup);
 
-                        var enemyInformationText: Phaser.Text = new Phaser.Text(apg.g, 100, 20, "", { font: '12px Helvetica', fill: '#C0C0C0' });
+                        var enemyInformationText: Phaser.Text = new Phaser.Text(apg.g, 100, 10, "", { font: '12px Helvetica', fill: '#C0C0C0' });
                         enemyInformationText.anchor = new Phaser.Point(0, 0);
-                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth: " + enemyMetadataForFrame.info[i].health + "\nSpeed: " + enemyMetadataForFrame.info[i].speed + "\nAttack:" + enemyMetadataForFrame.info[i].attack;
+                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth: \nSpeed: \nAttack:";
                         enemyInformationPopup.addChild(enemyInformationText);
 
-                        waveImages.push(enemyInformationPopup);
-                        waveText.push(enemyInformationText);
+                        /* Rectangle representing the health */
+                        var enemyHealthBar: Phaser.Sprite = new Phaser.Sprite(apg.g, -10, -63, 'assets/Rectangle.png');
+                        enemyHealthBar.scale = new Phaser.Point(0.6, 0.6);
+                        enemyHealthBar.tint = 0xFF6961;
+                        enemyHealthBar.update = () => {
+                            if (enemyHealthBar.parent != enemyInformationPopup) {
+                                enemyHealthBar.parent.removeChild(enemyHealthBar);
+                                enemyInformationPopup.addChild(enemyHealthBar);
+                            }
+                        }
+                        phaserGameWorld.addChild(enemyHealthBar);
 
-                        console.log("created something");
+                        /* Rectangle representing the speed */
+                        var enemySpeedBar: Phaser.Sprite = new Phaser.Sprite(apg.g, -10, -43, 'assets/Rectangle.png');
+                        enemySpeedBar.scale = new Phaser.Point(0.6, 0.6);
+                        enemySpeedBar.tint = 0x3299ff;
+                        enemySpeedBar.update = () => {
+                            if (enemySpeedBar.parent != enemyInformationPopup) {
+                                enemySpeedBar.parent.removeChild(enemySpeedBar);
+                                enemyInformationPopup.addChild(enemySpeedBar);
+                            }
+                        }
+                        phaserGameWorld.addChild(enemySpeedBar);
+
+                        /* Rectangle representing the attack */
+                        var enemyAttackBar: Phaser.Sprite = new Phaser.Sprite(apg.g, -10, -23, 'assets/Rectangle.png');
+                        enemyAttackBar.scale = new Phaser.Point(0.6, 0.6);
+                        enemyAttackBar.tint = 0xE6C76A;
+                        enemyAttackBar.update = () => {
+                            if (enemyAttackBar.parent != enemyInformationPopup) {
+                                enemyAttackBar.parent.removeChild(enemyAttackBar);
+                                enemyInformationPopup.addChild(enemyAttackBar);
+                            }
+                        }
+                        phaserGameWorld.addChild(enemyAttackBar);
+
+                        enemyInformationPopup.update = () => {
+                            /* display text and rectangles properly */
+                            enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * .5, 0.6);
+                            enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].speed * .5, 0.6);
+                            enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].attack * .5, 0.6);
+                        }
+
+                        waveImages.push(enemyInformationPopup);
                     }
 
                     waveNumber = enemyMetadataForFrame.waveNumber;

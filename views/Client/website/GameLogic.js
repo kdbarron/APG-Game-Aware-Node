@@ -84,7 +84,6 @@ function InitializeGame(apg) {
         var enemyID = 0;
         var waveNumber = -1;
         var waveImages = new Array();
-        var waveText = new Array();
         var enemyInformationArea = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
         enemyInformationArea.anchor = new Phaser.Point(0, 0);
         enemyInformationArea.scale = new Phaser.Point(0.35, 0.9);
@@ -97,13 +96,46 @@ function InitializeGame(apg) {
                     for (var i = 0; i < enemyMetadataForFrame.info.length; i++) {
                         var enemyInformationPopup = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
                         phaserGameWorld.addChild(enemyInformationPopup);
-                        var enemyInformationText = new Phaser.Text(apg.g, 100, 20, "", { font: '12px Helvetica', fill: '#C0C0C0' });
+                        var enemyInformationText = new Phaser.Text(apg.g, 100, 10, "", { font: '12px Helvetica', fill: '#C0C0C0' });
                         enemyInformationText.anchor = new Phaser.Point(0, 0);
-                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth: " + enemyMetadataForFrame.info[i].health + "\nSpeed: " + enemyMetadataForFrame.info[i].speed + "\nAttack:" + enemyMetadataForFrame.info[i].attack;
+                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth: \nSpeed: \nAttack:";
                         enemyInformationPopup.addChild(enemyInformationText);
+                        var enemyHealthBar = new Phaser.Sprite(apg.g, -10, -63, 'assets/Rectangle.png');
+                        enemyHealthBar.scale = new Phaser.Point(0.6, 0.6);
+                        enemyHealthBar.tint = 0xFF6961;
+                        enemyHealthBar.update = function () {
+                            if (enemyHealthBar.parent != enemyInformationPopup) {
+                                enemyHealthBar.parent.removeChild(enemyHealthBar);
+                                enemyInformationPopup.addChild(enemyHealthBar);
+                            }
+                        };
+                        phaserGameWorld.addChild(enemyHealthBar);
+                        var enemySpeedBar = new Phaser.Sprite(apg.g, -10, -43, 'assets/Rectangle.png');
+                        enemySpeedBar.scale = new Phaser.Point(0.6, 0.6);
+                        enemySpeedBar.tint = 0x3299ff;
+                        enemySpeedBar.update = function () {
+                            if (enemySpeedBar.parent != enemyInformationPopup) {
+                                enemySpeedBar.parent.removeChild(enemySpeedBar);
+                                enemyInformationPopup.addChild(enemySpeedBar);
+                            }
+                        };
+                        phaserGameWorld.addChild(enemySpeedBar);
+                        var enemyAttackBar = new Phaser.Sprite(apg.g, -10, -23, 'assets/Rectangle.png');
+                        enemyAttackBar.scale = new Phaser.Point(0.6, 0.6);
+                        enemyAttackBar.tint = 0xE6C76A;
+                        enemyAttackBar.update = function () {
+                            if (enemyAttackBar.parent != enemyInformationPopup) {
+                                enemyAttackBar.parent.removeChild(enemyAttackBar);
+                                enemyInformationPopup.addChild(enemyAttackBar);
+                            }
+                        };
+                        phaserGameWorld.addChild(enemyAttackBar);
+                        enemyInformationPopup.update = function () {
+                            enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * .5, 0.6);
+                            enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].speed * .5, 0.6);
+                            enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].attack * .5, 0.6);
+                        };
                         waveImages.push(enemyInformationPopup);
-                        waveText.push(enemyInformationText);
-                        console.log("created something");
                     }
                     waveNumber = enemyMetadataForFrame.waveNumber;
                 }
