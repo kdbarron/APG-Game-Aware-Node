@@ -292,10 +292,14 @@ function InitializeGame(apg: APGSys): void {
 
                         enemyInformationPopup.update = () => {
                             /* display text and rectangles properly */
-                            if (enemyMetadataForFrame != null && enemyMetadataForFrame.info[i] != null) {
-                                enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health * .5, 0.6);
-                                enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].speed * .5, 0.6);
-                                enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].attack * .5, 0.6);
+                            if (enemyMetadataForFrame != null) {
+                                for (var j: number = 0; j < enemyMetadataForFrame.info.length; j++) {
+                                    if (i == j) {
+                                        enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].health * .5, 0.6);
+                                        enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].speed * .5, 0.6);
+                                        enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].attack * .5, 0.6);
+                                    }
+                                }
                             }
                         }
 
