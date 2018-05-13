@@ -228,10 +228,12 @@ function InitializeGame(apg: APGSys): void {
         var waveNumber: number = -1;
         var waveImages: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
 
-        interface EnemyPopup {
-            sprite: Phaser.Sprite;
+        /*
+        class EnemySprite extends Phaser.Sprite {
+            p _enemyID: number
             enemyID: number;
         }
+        */
 
         //parent graphic to contain enemy graphics
         var enemyInformationArea: Phaser.Sprite = new Phaser.Sprite(apg.g, 800, 75, 'assets/background.png');
@@ -249,8 +251,9 @@ function InitializeGame(apg: APGSys): void {
 
                     //Create graphics of enemy information
                     for (var i: number = 0; i < enemyMetadataForFrame.info.length; i++) {
-                        var enemyID = i;
                         var enemyInformationPopup: Phaser.Sprite = new Phaser.Sprite(apg.g, enemyInformationArea.x + 20, i * 100 + enemyInformationArea.y + 20, 'assets/' + enemyMetadataForFrame.info[i].enemyName + 'InformationPopup.png');
+                        enemyInformationPopup['enemyID'] = i;
+
                         phaserGameWorld.addChild(enemyInformationPopup);
 
                         var enemyInformationText: Phaser.Text = new Phaser.Text(apg.g, 100, 10, "", { font: '12px Helvetica', fill: '#C0C0C0' });
@@ -296,11 +299,11 @@ function InitializeGame(apg: APGSys): void {
                         phaserGameWorld.addChild(enemyAttackBar);
 
                         enemyInformationPopup.update = () => {
-                            console.log(enemyID);
+                            console.log(enemyInformationPopup['enemyID']);
                             /* display text and rectangles properly */
                             if (enemyMetadataForFrame != null) {
                                 for (var j: number = 0; j < enemyMetadataForFrame.info.length; j++) {
-                                    if (enemyID == j) {
+                                    if (enemyInformationPopup['enemyID'] == j) {
                                         enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].health * .5, 0.6);
                                         enemySpeedBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].speed * .5, 0.6);
                                         enemyAttackBar.scale = new Phaser.Point(enemyMetadataForFrame.info[j].attack * .5, 0.6);
