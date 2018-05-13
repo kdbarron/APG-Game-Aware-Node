@@ -222,7 +222,7 @@ function InitializeGame(apg: APGSys): void {
         var radiusImages: Array<Phaser.Sprite> = new Array<Phaser.Sprite>();
 
 
-        var radiusHighlightHolder: Phaser.Sprite = new Phaser.Sprite(apg.g, 10, 0, 'assets/Rectangle.png');
+        var radiusHighlightHolder: Phaser.Sprite = new Phaser.Sprite(apg.g, 0, 50, 'assets/Rectangle.png');
         radiusHighlightHolder.scale = new Phaser.Point(8, 4);
         radiusHighlightHolder.update = () => {
             if (metadataForFrame != null) {
