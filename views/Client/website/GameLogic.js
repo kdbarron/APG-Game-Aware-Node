@@ -90,9 +90,10 @@ function InitializeGame(apg) {
                     var topY = APGHelper.ScreenY(metadataForFrame.items[k].y);
                     var rightX = APGHelper.ScreenX(metadataForFrame.items[k].scaleX + metadataForFrame.items[k].x);
                     var bottomY = APGHelper.ScreenY(metadataForFrame.items[k].y - metadataForFrame.items[k].scaleY);
-                    var radius = metadataForFrame.items[k].radius * .1;
-                    var radiusSprite = new Phaser.Sprite(apg.g, leftX, topY, 'assets/redCircle.png');
+                    var radius = metadataForFrame.items[k].radius * .01;
+                    var radiusSprite = new Phaser.Sprite(apg.g, leftX - radius, topY - radius, 'assets/redCircle.png');
                     radiusSprite.scale = new Phaser.Point(radius, radius);
+                    radiusSprite.alpha = 0.5;
                     phaserGameWorld.addChild(radiusSprite);
                     radiusImages.push(radiusSprite);
                     console.log(radiusSprite.scale);
