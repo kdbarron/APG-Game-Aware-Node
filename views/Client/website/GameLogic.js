@@ -96,7 +96,7 @@ function InitializeGame(apg) {
                     phaserGameWorld.addChild(enemyInformationPopup);
                     if (enemyMetadataForFrame.info[i].enemyName == 'Hoverboss') {
                         var enemyInformationText = new Phaser.Text(apg.g, 100, 10, "", { font: '12px Helvetica', fill: '#C0C0C0' });
-                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth:                                x15 \nSpeed: \nAttack:";
+                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth:                           x15 \nSpeed: \nAttack:";
                         enemyInformationPopup.addChild(enemyInformationText);
                         var enemyHealthBar = new Phaser.Sprite(apg.g, 145, 31, 'assets/Rectangle.png');
                         enemyHealthBar.scale = new Phaser.Point(enemyMetadataForFrame.info[i].health / 15 * 0.1, 0.6);

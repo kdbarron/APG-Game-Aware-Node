@@ -255,7 +255,7 @@ function InitializeGame(apg: APGSys): void {
 
                     if (enemyMetadataForFrame.info[i].enemyName == 'Hoverboss') {
                         var enemyInformationText: Phaser.Text = new Phaser.Text(apg.g, 100, 10, "", { font: '12px Helvetica', fill: '#C0C0C0' });
-                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth:                                x15 \nSpeed: \nAttack:";
+                        enemyInformationText.text = enemyMetadataForFrame.info[i].enemyName + "\nHealth:                           x15 \nSpeed: \nAttack:";
                         enemyInformationPopup.addChild(enemyInformationText);
 
                         /* Rectangle representing the health */
